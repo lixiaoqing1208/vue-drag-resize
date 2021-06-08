@@ -38,9 +38,6 @@ export default {
         parentScaleY: {
             type: Number, default: 1,
         },
-        isActive: {
-            type: Boolean, default: false,
-        },
         preventActiveBehavior: {
             type: Boolean, default: false,
         },

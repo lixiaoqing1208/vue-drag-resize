@@ -1,9 +1,9 @@
 {
-  "name": "vue-drag-resize",
-  "version": "1.5.4",
+  "name": "vue-drag-resize-active",
+  "version": "1.0.6",
   "description": "Vue Component for resize and drag elements",
   "author": "Kirill Murashov <me@kirillmurashov.com>",
-  "main": "dist/index.js",
+  "main": "src/index.js",
   "scripts": {
     "start": "NODE_ENV=develop webpack-dev-server -d",
     "svg": "vsvg -s ./src/demo/svg -t ./src/demo/icons",
