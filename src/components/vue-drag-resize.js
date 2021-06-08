@@ -167,7 +167,6 @@ export default {
     data() {
         return {
             fixAspectRatio: null,
-            active: null,
             zIndex: null,
             parentWidth: null,
             parentHeight: null,
@@ -234,12 +233,6 @@ export default {
     },
 
     methods: {
-        deselect() {
-            if (this.preventActiveBehavior) {
-                return;
-            }
-            this.active = false;
-        },
 
         move(ev) {
             if (!this.stickDrag && !this.bodyDrag) {
@@ -285,19 +278,11 @@ export default {
         bodyDown(ev) {
             const { target, button } = ev;
 
-            if (!this.preventActiveBehavior) {
-                this.active = true;
-            }
-
             if (button && button !== 0) {
                 return;
             }
 
             this.$emit('clicked', ev);
-
-            if (!this.active) {
-                return;
-            }
 
             if (this.dragHandle && target.getAttribute('data-drag-handle') !== this._uid.toString()) {
                 return;
@@ -398,7 +383,7 @@ export default {
         },
 
         stickDown(stick, ev, force = false) {
-            if ((!this.isResizable || !this.active) && !force) {
+            if ((!this.isResizable) && !force) {
                 return;
             }
 
@@ -725,21 +710,6 @@ export default {
     },
 
     watch: {
-        active(isActive) {
-            if (isActive) {
-                this.$emit('activated');
-            } else {
-                this.$emit('deactivated');
-            }
-        },
-
-        isActive: {
-            immediate: true,
-            handler(val) {
-                this.active = val;
-            },
-        },
-
         z: {
             immediate: true,
             handler(val) {
